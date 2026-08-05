@@ -24,28 +24,15 @@
 ![planning_1.jpeg](/pragya_readme/planning_1.jpeg)
 
 ## 2. Architecture
-  
 
-                                 [ Camera Stream ]
-                                        │
-                                        ▼
-                      +----------------------------------+
-                      |   TIER 1: CLIP (Global Vision)   |
-                      |   - Understands scene context    |
-                      |   - Detects accident / collision |
-                      +-----------------+----------------+
-                                        │
-                         [ Accident Flagged: YES ]
-                                        │
-                                        ▼
-                      +----------------------------------+
-                      |   TIER 2: ALPR (Targeted Vision) |
-                      |   - Isolates vehicle plate       |
-                      |   - Extracts license plate OCR   |
-                      +-----------------+----------------+
-                                        │
-                                        ▼
-                           [ Emergency Alert & Log ]
+  ### Client - server architecture (simplified)
+
+  <img width="1346" height="1600" alt="image" src="https://github.com/user-attachments/assets/e4c3aa12-f49b-4c18-a041-fe6602b5bd4c" />
+
+### Steps involved
+
+<img width="400" height="375" alt="image" src="https://github.com/user-attachments/assets/2fb5b591-c94b-45be-81af-ffae09b49ccb" />
+
                            
 
    

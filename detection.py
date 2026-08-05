@@ -5,35 +5,41 @@ from PIL import Image
 device = "mps" if torch.mps.is_available() else "cpu"
 model,processor = clip.load("ViT-B/16",device=device)
 
-model = model.to(torch.float16)
 
-model_visual = model.visual
 logit_scale = model.logit_scale.exp()
-del model
-model = model_visual
+
 
 text = torch.load("text_features.pt")
-crash_labels = text["crash_labels"]
-crash_features = text["crash_features"].to(device).to(torch.float16)
-no_crash_labels = text["no_crash_labels"]
-no_crash_features = text["no_crash_features"].to(device).to(torch.float16)
+labels = text["labels"]
+
+text_features = text["text_features"].to(device)
+
+texts = [
+    "a crash/about to crash",
+    "a normal road or steady traffic flow, no accidents"
+]
+
+text_tokens  = clip.tokenize(texts).to(device)
 
 def detect(img_list):
     processed_images = [processor(img) for img in img_list]
-    batch_tensor = torch.stack(processed_images).to(torch.float16).to(device)
+    batch_tensor = torch.stack(processed_images).to(device)
+    # img1 = processor(Image.open("crash.jpeg"))
+    # img2 = processor(Image.open("bike.jpg"))
+
+    # img = torch.stack([img1,img2]).to(device)
 
     with torch.no_grad():
-        image_features = model(batch_tensor)
+        image_features = model.encode_image(batch_tensor)
         image_features = image_features/image_features.norm(dim=-1, keepdim = True)
 
-        crash_logits = logit_scale * (image_features @ crash_features.T)
-        no_crash_logits = logit_scale * (image_features @ no_crash_features.T)
-        logits = torch.cat([crash_logits,no_crash_logits], dim=-1).squeeze(0)
+        logits = logit_scale * (image_features @ text_features.T)
+
         probability = logits.softmax(dim=-1).cpu().numpy()
 
         return probability
 
 
 if __name__ == "__main__":
-    img = Image.open("crash.jpeg")
+    img = Image.open("bike.jpg")
     print(detect(img))

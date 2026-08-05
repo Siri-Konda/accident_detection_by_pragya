@@ -26,3 +26,5 @@ torch.save({
     "no_crash_labels" : no_crash_labels,
     "no_crash_features" : no_crash_features.cpu()
 }, "text_features.pt")
+
+print("Saved vectors to text_features.pt")

@@ -1,11 +1,10 @@
-PRAGYA
+# PRAGYA
+ VISION BASED AUTOMATIC DETECTION OF ACCIDENTS IN HIGHWAY
 
-VISION BASED AUTOMATIC DETECTION OF ACCIDENTS IN HIGHWAY
 
+## 1. Planning
 
-# 1. Planning
-
-## Stage 1: Brainstorming Ideas
+### Stage 1: Brainstorming Ideas
 
 - Using Yolo for object detection and experimenting with value, camera warps, physics and pixels to detect crashes
 - Using Clip to detect crashes for static images
@@ -18,9 +17,9 @@ VISION BASED AUTOMATIC DETECTION OF ACCIDENTS IN HIGHWAY
 - Saving a map (data) of camera ID with the nearest police station/ Hospital to ensure effectiveness
 
 
-## Stage 2: Picking out essential ideas 
+### Stage 2: Picking out essential ideas 
 
-### First draft: 
+#### First draft: 
 
 ![planning_2.jpeg](/pragya_readme/plannning_2.jpeg)
 

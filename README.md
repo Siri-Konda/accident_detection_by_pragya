@@ -19,8 +19,12 @@
 
 ### Stage 2: Picking out essential ideas 
 
-#### First draft: 
-'''text
+![planning_2.jpeg](/pragya_readme/planning_2.jpeg)
+
+![planning_1.jpeg](/pragya_readme/planning_1.jpeg)
+
+## 2. Architecture
+   '''
 
                                  [ Camera Stream ]
                                         │
@@ -42,10 +46,17 @@
                                         │
                                         ▼
                            [ Emergency Alert & Log ]
+                           
 
-     '''
+   """
 
-![planning_2.jpeg](/pragya_readme/planning_2.jpeg)
+   ### Breakdown 
 
-![planning_1.jpeg](/pragya_readme/planning_1.jpeg)
-
+   - placed every 500km - 1km along highway stretches to stream RTSP video feed
+   - downsamples stream to 5-10 FPS to minimize redundant frame processing
+   - captures frame-to-frame motion dependencies
+   - manages parallel multi-camera streaming payloads
+   - delivers real-time geospatical alerts to traffic control center
+   - 
+     
+     

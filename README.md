@@ -21,6 +21,27 @@
 
 #### First draft: 
 
+[ Camera Stream ]
+                                        │
+                                        ▼
+                      +----------------------------------+
+                      |   TIER 1: CLIP (Global Vision)   |
+                      |   - Understands scene context    |
+                      |   - Detects accident / collision |
+                      +-----------------+----------------+
+                                        │
+                         [ Accident Flagged: YES ]
+                                        │
+                                        ▼
+                      +----------------------------------+
+                      |   TIER 2: ALPR (Targeted Vision) |
+                      |   - Isolates vehicle plate       |
+                      |   - Extracts license plate OCR   |
+                      +-----------------+----------------+
+                                        │
+                                        ▼
+                           [ Emergency Alert & Log ]
+
 ![planning_2.jpeg](/pragya_readme/planning_2.jpeg)
 
 ![planning_1.jpeg](/pragya_readme/planning_1.jpeg)

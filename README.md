@@ -1,55 +1,29 @@
 PRAGYA
 
 VISION BASED AUTOMATIC DETECTION OF ACCIDENTS IN HIGHWAY
-Domain:
 
-TEAM(5 Members):
-*
-*
-*
-*
-*
+```
+# 1. Planning
 
-OUR SOLUTION: 
-Traffic accidents on highways require immediate detection and identification to minimize response times for emergency services. This project presents an end-to-end computer vision pipeline that combines state-of-the-art vision-language modeling with optical character recognition:
-​Accident Detection: Continuous monitoring of video feeds to recognize collision patterns, overturned vehicles, and off-road incidents.
-​License Plate Extraction: Automated detection and extraction of vehicle license plates within the accident zone to identify involved vehicles.
-​
+## Stage 1: Brainstorming Ideas
 
-Key Features
-​*Real-Time Video Analytics:
-Processes multi-lane highway feeds with high efficiency.
-​
-*CLIP-Driven Event Classification: 
-Leverages zero-shot / fine-tuned multimodal capabilities to identify accident scenes based on visual-textual semantics.
-​
-*Automated License Plate Recognition (ALPR):
-Localizes and reads alphanumeric text on license plates under varying lighting and speed conditions.
-​
-*Incident Alerting & Logging:
-Logs timestamps, snapshot frames, detected license numbers, and confidence scores for emergency dispatch.
-
-TECH STACK: :
-
-CLIP (Open AI) : Accident Detection using CLIP (Contrastive Language-Image Pre-training)
-​Overview: Developed by OpenAI, CLIP is a multimodal neural network trained on a vast dataset of image-text pairs. It learns visual concepts under natural language supervision.
+- Using Yolo for object detection and experimenting with value, camera warps, physics and pixels to detect crashes
+- Using Clip to detect crashes for static images
+- Alert could contain severity level (Detecting blood, smoke or fire), possibly extract emergency contact using the number plate (Can be detected using YOLO), number of people involved in the accidents(so that the required number of ambulances can be sent)
+- Can (store and) display the clip of the accident footage
+- Generate required SMS/ automated Call After (or otherwise) human approval (10-20 sec window per detection)
+- detect the number plate using ALDR/OCR and extract text after resizing (adjusting for the camera warp)
+- Detect kidnappings
+- Raising tickets for "speed limit exceeded" cases
+- Saving a map (data) of camera ID with the nearest police station/ Hospital to ensure effectiveness
 
 
-ALPR (Automatic License Plate Recognition ) : ALPR is a multi-stage computer vision technology used to detect, crop, and read license plate text from vehicle images.
+## Stage 2: Picking out essential ideas 
 
-Optical Character Recognition (OCR): Translates localized plate regions into structured alphanumeric text string for logging and law enforcement verification.
+### First draft: 
 
+![planning_2.jpeg](/pragya_readme/plannning_2.jpeg)
 
-Features Implemented :
+![planning_1.jpeg](/pragya_readme/planning_1.jpeg)
 
-Core Requirements: 
-
-Bonus Features Attempted:
-
-
-
-How to Run This Project :
-
-
-
-
+```

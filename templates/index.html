@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Live Accident Detection</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #121212; color: #ffffff; text-align: center; }
+        .grid { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin-top: 20px; }
+        .card { background-color: #1e1e1e; border-radius: 8px; padding: 10px; max-width: 500px; }
+        img { width: 100%; border-radius: 6px; background-color: #000; min-height: 280px; }
+        .start-btn { margin-top: 20px; padding: 15px 30px; font-size: 20px; font-weight: bold; background-color: #e50914; color: white; border: none; border-radius: 5px; cursor: pointer; }
+        .start-btn:hover { background-color: #f6121d; }
+    </style>
+</head>
+<body>
+    <h1>Real-Time Accident Detection</h1>
+    <button class="start-btn" onclick="startStreams()">Start Videos</button>
+    
+    <div class="grid">
+        {% for video in videos %}
+        <div class="card">
+            <h3>{{ video }}</h3>
+            <!-- data-src prevents loading until Start is clicked -->
+            <img class="video-stream" data-src="/video_feed/{{ video }}" alt="Waiting to start...">
+        </div>
+        {% endfor %}
+    </div>
+
+    <script>
+        function startStreams() {
+            const images = document.querySelectorAll('.video-stream');
+            images.forEach(img => {
+                if (!img.src || img.src.includes("Waiting")) {
+                    img.src = img.getAttribute('data-src');
+                }
+            });
+        }
+    </script>
+</body>
+</html>

@@ -21,7 +21,7 @@
 
 #### First draft: 
 
-![planning_2.jpeg](/pragya_readme/plannning_2.jpeg)
+![planning_2.jpeg](/pragya_readme/planning_2.jpeg)
 
 ![planning_1.jpeg](/pragya_readme/planning_1.jpeg)
 

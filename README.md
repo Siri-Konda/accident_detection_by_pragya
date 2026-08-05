@@ -2,7 +2,7 @@ PRAGYA
 
 VISION BASED AUTOMATIC DETECTION OF ACCIDENTS IN HIGHWAY
 
-```
+
 # 1. Planning
 
 ## Stage 1: Brainstorming Ideas
@@ -26,4 +26,3 @@ VISION BASED AUTOMATIC DETECTION OF ACCIDENTS IN HIGHWAY
 
 ![planning_1.jpeg](/pragya_readme/planning_1.jpeg)
 
-```

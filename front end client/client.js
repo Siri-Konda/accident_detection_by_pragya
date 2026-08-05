@@ -8,7 +8,13 @@ for(i=0;i<n;i++)
 
     let grid_element=document.createElement("div");
     grid_element.className="grid-element";
-    let video=;//insert video file;
+    const video=
+    document.createElement("video");
+
+    video.src="video.mp4";
+    video.controls=true;
+    video.width=640;
+
     let location=document.createElement("p");
     location.textContent="";
 

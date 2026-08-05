@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CCTV Video Upload</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="cctv-camera.png">
+</head>
+<body>
+<div class="container">
+    <div class="card">
+        <h2>CCTV Footage Upload</h2>
+        <p>Upload a CCTV clip and its metadata.</p>
+    
+        <form id="uploadForm">
+            <label for="cameraId">Camera ID</label>
+            <input type="text" id="cameraId" placeholder="e.g., CAM-01" required />
+
+            <label for="cameraLocation">Camera Location</label>
+            <input type="text" id="cameraLocation" placeholder="e.g., Main Gate" required />
+
+            <label for="videoInput">Video File
+                <span class="upload-icon">📁</span>
+                <span id="file-name" class="upload-text">Choose file or drag here</span>
+            </label>
+            <input type="file" id="videoInput" accept="video/*" required />
+            <button type="submit">Upload Video</button>
+        </form>
+
+        <div id="status"></div>
+    </div>
+</div>
+
+<script>
+    document.getElementById('uploadForm').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        const fileInput = document.getElementById('videoInput');
+        const cameraId = document.getElementById('cameraId').value;
+        const cameraLocation = document.getElementById('cameraLocation').value;
+        const statusDiv = document.getElementById('status');
+
+        if (!fileInput.files[0]) return;
+
+        // Append text fields and file to FormData
+        const formData = new FormData();
+        formData.append('video', fileInput.files[0]);
+        formData.append('camera_id', cameraId);
+        formData.append('camera_location', cameraLocation);
+
+        statusDiv.innerText = "Uploading video and data... Please wait.";
+
+        try {
+            const response = await fetch('/upload', {
+                method: 'POST',
+                body: formData
+            });
+
+            const result = await response.json();
+            if (response.ok) {
+                statusDiv.style.color = "green";
+                statusDiv.innerText = "Done! Video and metadata saved successfully.";
+                document.getElementById('uploadForm').reset(); // Clear the form
+            } else {
+                statusDiv.style.color = "red";
+                statusDiv.innerText = `Error: ${result.detail || 'Upload failed'}`;
+            }
+        } catch (error) {
+            statusDiv.style.color = "red";
+            statusDiv.innerText = "Upload failed. Check server logs.";
+            console.error(error);
+        }
+    });
+</script>
+
+</body>
+</html>

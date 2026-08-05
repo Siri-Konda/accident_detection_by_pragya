@@ -14,7 +14,9 @@ OUR SOLUTION:
 Traffic accidents on highways require immediate detection and identification to minimize response times for emergency services. This project presents an end-to-end computer vision pipeline that combines state-of-the-art vision-language modeling with optical character recognition:
 ​Accident Detection: Continuous monitoring of video feeds to recognize collision patterns, overturned vehicles, and off-road incidents.
 ​License Plate Extraction: Automated detection and extraction of vehicle license plates within the accident zone to identify involved vehicles.
-​🚀 Key Features
+​
+
+Key Features
 ​*Real-Time Video Analytics:
 Processes multi-lane highway feeds with high efficiency.
 ​

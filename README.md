@@ -20,8 +20,9 @@
 ### Stage 2: Picking out essential ideas 
 
 #### First draft: 
+'''text
 
-[ Camera Stream ]
+                                 [ Camera Stream ]
                                         │
                                         ▼
                       +----------------------------------+
@@ -41,6 +42,8 @@
                                         │
                                         ▼
                            [ Emergency Alert & Log ]
+
+     '''
 
 ![planning_2.jpeg](/pragya_readme/planning_2.jpeg)
 

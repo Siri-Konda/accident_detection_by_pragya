@@ -28,3 +28,14 @@ for(i=0;i<n;i++)
     container.append(grid_element)
 }
 }
+
+//ENDPOINT TO ADD TO BACKEND
+// @app.get("/camera-id/{filename}")
+// async def camera_id(filename:str):
+//     return {"camera_id": "CAM-001"}
+let array=[];
+async function getCameraId(filename)
+{
+    const resp=await fetch( `http://localhost:8000/camera_id/${filename}`);
+    const data=await Response.json();
+}

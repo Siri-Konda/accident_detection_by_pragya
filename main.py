@@ -1,3 +1,4 @@
+
 import os
 import time
 import cv2
@@ -21,6 +22,7 @@ templates = Jinja2Templates(directory="templates")
 def print_msg(a,b):
     print(f"SMS triggered")
 
+MAX_BLANK_DURATION = 250
 
 def generate_frames(filename: str, camera_id: str, camera_location: str):
     video_path = os.path.join("uploaded_videos", filename)
@@ -32,10 +34,12 @@ def generate_frames(filename: str, camera_id: str, camera_location: str):
 
     frame_count = 0
     max_prob_so_far = 0.0  
-    
+    MAX_DIFFERENCE = 300
+    previous_working_frame = 0
      
     sms_sent = False 
     fire_sent = False
+    blank_sent = False
 
     target_w, target_h = 640, 360
 
@@ -62,11 +66,12 @@ def generate_frames(filename: str, camera_id: str, camera_location: str):
             crash_prob = probs[0] if probs.ndim == 1 else probs[0][0]
             current_prob_percent = crash_prob * 100.0
 
-            no_crash_prob = probs[1] if probs.ndim == 1 else probs[0][1]
-            no_crash_prob_percent = no_crash_prob * 100
 
             fire_prob = probs[3] if probs.ndim ==1 else probs[0][3]
             fire_prob_percent = fire_prob * 100.0
+
+            blank_prob = probs[2] if probs.ndim==1 else probs[0][2]
+            blank_prob_percent = blank_prob * 100.0
 
             if current_prob_percent > max_prob_so_far:
                 max_prob_so_far = current_prob_percent
@@ -82,13 +87,20 @@ def generate_frames(filename: str, camera_id: str, camera_location: str):
                 threading.Thread(target=print_msg, args=(target_number, message)).start()
                 print(f"SMS triggered for {camera_id} at {camera_location} to ambulance")
 
-            if fire_prob_percent>25.0 and not fire_sent:
+            if fire_prob_percent>40.0 and not fire_sent:
                 fire_sent = True
                 message = f"URGENT: Fire invloved in accident detected at {camera_location} (Camera ID: {camera_id}). Immediate assistance required!"
                 target_number = "7892632753"
                 threading.Thread(target=print_msg, args=(target_number,message)).start()
                 print(f"SMS triggered for fire emergency")
-
+                
+            if blank_prob_percent > 50.0:
+                if frame_count - previous_working_frame > MAX_BLANK_DURATION and not blank_sent: #10 secs
+                    blank_sent = True
+                    print(f"{camera_id} at {camera_location} may not be working")
+                
+            else: 
+                previous_working_frame = frame_count
 
          
         h, w = frame.shape[:2]
@@ -104,12 +116,16 @@ def generate_frames(filename: str, camera_id: str, camera_location: str):
         display_frame[y_offset:y_offset+new_h, x_offset:x_offset+new_w] = resized_frame
 
          
-        if max_prob_so_far > 75.0:
+        if frame_count - previous_working_frame > MAX_BLANK_DURATION:
+            text = "Video footage is blank"
+            color = (0, 0, 255)
+        elif max_prob_so_far > 75.0:
             text = f"ACCIDENT DETECTED! ({max_prob_so_far:.1f}%)"
             color = (0, 0, 255)
         elif max_prob_so_far > 0:
             text = f"Max Prob: {max_prob_so_far:.1f}%"
             color = (0, 255, 0)
+
         else:
             text = "Analyzing..."
             color = (255, 255, 255)

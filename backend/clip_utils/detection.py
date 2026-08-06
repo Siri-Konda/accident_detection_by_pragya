@@ -9,7 +9,7 @@ model,processor = clip.load("ViT-B/16",device=device)
 logit_scale = model.logit_scale.exp()
 
 
-text = torch.load("text_features.pt")
+# text = torch.load("text_features.pt")
 # labels = text["labels"]
 
 #text_features = text["crash_features"].to(device)

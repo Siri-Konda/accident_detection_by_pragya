@@ -11,13 +11,13 @@ from fastapi import FastAPI, Request
 from fastapi.responses import HTMLResponse, StreamingResponse
 from fastapi.templating import Jinja2Templates
 
-from detection import detect
-from notifier import send_sms  
+from clip_utils.detection import detect
+from sms.notifier import send_sms  
 
 app = FastAPI()
 
-app.mount("/static", StaticFiles(directory="static"), name="static")
-templates = Jinja2Templates(directory="templates")
+
+templates = Jinja2Templates(directory="../frontend/dashboard")
 
 def print_msg(a,b):
     print(f"SMS triggered")
@@ -87,7 +87,7 @@ def generate_frames(filename: str, camera_id: str, camera_location: str):
                 threading.Thread(target=print_msg, args=(target_number, message)).start()
                 print(f"SMS triggered for {camera_id} at {camera_location} to ambulance")
 
-            if fire_prob_percent>40.0 and not fire_sent:
+            if fire_prob_percent>35 and not fire_sent:
                 fire_sent = True
                 message = f"URGENT: Fire invloved in accident detected at {camera_location} (Camera ID: {camera_id}). Immediate assistance required!"
                 target_number = "7892632753"

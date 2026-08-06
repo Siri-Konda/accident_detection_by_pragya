@@ -4,73 +4,116 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CCTV Video Upload</title>
-    <link rel="stylesheet" href="style.css">
     <style>
+        .headbox{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height:5%;
+            width:auto;
+            padding: 20px 50px;
+            background-color: #fdfdfd;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky; 
+            top: 0; 
+            z-index: 1000;
+            border-bottom: 5px solid rgb(96, 96, 255);
+        }
+        h1{
+            color:rgb(112, 112, 255);
+            letter-spacing: 0.05em;
+        }
         body{
             font-family:Arial,sans-serif;
-            margin:40px;
-            background-color:#8bbfd3;
+            margin:0px;
+            background-color:rgb(152, 152, 255);
             justify-content: center;
         }
         .card{
             max-width:500px;
             background:white;
-            padding:25px;
+            padding:50px 40px;
             border-radius:8px;
             box-shadow:0 2px 8px rgba(0,0,0,0.1); 
         }
+        
         h2{
             margin-top:0;
+            margin-bottom: 6px;
             color:#333;
+            font-size: 700;
             text-align: center;
         }
-label{
-    font-weight:bold;
-    display:block;
-    margin-top:15px;
-}
-input[type="text"], input[type="file"] { 
-    width: 100%; 
-    padding: 8px; 
-    margin-top: 5px; 
-    box-sizing: border-box; 
-    border: 1px solid #ccc; 
-    border-radius: 4px;
-}
-button { 
-    margin-top: 20px; 
-    background-color: #007bff; 
-    color: white; border: none; 
-    padding: 10px 15px; 
-    border-radius: 4px; 
-    cursor: pointer; width: 100%; 
-    font-size: 16px;
-}
-button:hover { 
-    background-color: #0056b3; 
-}
-#status { 
-    margin-top: 15px; 
-    font-weight: bold; 
-    text-align: center; 
-}
-.container{
-    display:grid;
-    margin:auto;
-    height:85vh;
-    place-items: center;
-    justify-content:center;
-    align-content: center;
-    flex:1;
-}
-.upload-text{
-    font-size: smaller;
-    font-weight: lighter;
-}
-p{
-    text-align: center;
-}
-</style>
+        label{
+            font-weight:600;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            display:block;
+            margin-top:20px;
+            color:#374151;
+        }
+        input[type="text"], input[type="file"] { 
+            width: 100%; 
+            padding: 8px; 
+            margin-top: 5px; 
+            font-size:14px;
+            background-color: #f9fafb;
+            box-sizing: border-box; 
+            border: 1px solid #e5e7eb; 
+            border-radius: 4px;
+            transition: all 0.2s ease;
+        }
+        input[type="text"]:focus{
+            border-color: rgb(152, 152, 255);
+            background-color: #ffffff;
+            box-shadow: 0 0 0 4px rgba(0, 119, 255, 0.08);
+        }
+        button { 
+            margin-top: 20px; 
+            background-color: rgb(96, 96, 255); 
+            color: white; 
+            border: none; 
+            padding: 10px 15px; 
+            border-radius: 8px; 
+            cursor: pointer; 
+            width: 100%; 
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+        button:hover { 
+            background-color: rgb(96, 96, 255); 
+            transform: translateY(-2px); 
+        }
+        button:active{
+            transform: translateY();
+        }
+        #status { 
+            margin-top: 15px; 
+            font-weight: bold; 
+            text-align: center;     
+        }
+        .container{
+            display:grid;
+            margin:auto;
+            height:80vh;
+            place-items: center;
+            justify-content:center;
+            align-content: center;
+            flex:1;
+        }
+        .upload-text{
+            font-size: smaller;
+            font-weight: lighter;
+        }
+        p{
+            text-align: center;
+        }
+    </style>
+    <div class="headbox">
+        <h1>PRAGYA</h1>
+    </div>
 </head>
 <body>
 <div class="container">

@@ -1,49 +1,97 @@
 import torch
 import clip
+import numpy as np
 from PIL import Image
 
-device = "mps" if torch.mps.is_available() else "cpu"
-model,processor = clip.load("ViT-B/16",device=device)
+
+device = "cuda" if torch.cuda.is_available() else "cpu"
+model, preprocess = clip.load("ViT-B/16", device=device)
 
 
-logit_scale = model.logit_scale.exp()
+# ACCIDENT_PROMPTS = [
+#     # "vehicle accident collision",
+#     # "a fallen bike on road",
+#     # "a photo of two vehicles colliding",
+#     # "a fallen man on road"
+#     "CCTV footage of a motorcycle crash or accident",
+#     "a crashed motorcycle lying sideways on the road",
+#     "a person lying fallen on the road next to a bike",
+#     "a collision with two vehicles crashing into each other"
+# ]
 
+# NORMAL_PROMPTS = [
+#     # "Normal Traffic flow",
+#     # "normal road, traffic",
+#     # "no accidents"
+#     "CCTV footage of normal traffic flowing smoothly",
+#     "a person riding a motorcycle upright along the road",
+#     "a motorcycle traveling normally on an asphalt street",
+#     "an urban road with normal vehicle traffic",
+    
+#     # Daytime Specific
+#     "a daytime CCTV view of motorcycles driving safely on the street",
+    
+#     # Nighttime Specific
+#     "a nighttime CCTV view of motorcycles driving with headlights"
 
-# text = torch.load("text_features.pt")
-# labels = text["labels"]
+# ]
 
-#text_features = text["crash_features"].to(device)
+ACCIDENT_PROMPTS = [
+    "a cctv footage of a crash or accident in some part of footage",
+    "a fallen bike in some part of the footage"
+]
 
-texts = [
-    "a crash/accident",
-    "a normal road or steady traffic flow, no accidents",
-    "blank or static noises screen",
-    "smoke or fire"
+NORMAL_PROMPTS = [
+    "a cctv footage of road with vehicles moving without accidents"
+]
+
+BLANK_PROMPTS = [
+    "camera video loss with static noise or blank screen"
+]
+
+FIRE_PROMPTS = [
+    "a severe fire and thick smoke on the road"
 ]
 
 
-text_tokens  = clip.tokenize(texts).to(device)
+ALL_PROMPTS = ACCIDENT_PROMPTS + NORMAL_PROMPTS + BLANK_PROMPTS + FIRE_PROMPTS
 
-def detect(img_list):
-    processed_images = [processor(img) for img in img_list]
-    batch_tensor = torch.stack(processed_images).to(device)
-    # img1 = processor(Image.open("crash.jpeg"))
-    # img2 = processor(Image.open("bike.jpg"))
 
-    # img = torch.stack([img1,img2]).to(device)
+text_tokens = clip.tokenize(ALL_PROMPTS).to(device)
 
+def detect(images):
+    """
+    Takes a list of PIL images and returns probabilities for [accident, normal, blank, fire]
+    """
+    
+    image_input = torch.stack([preprocess(img) for img in images]).to(device)
+    
     with torch.no_grad():
-        image_features = model.encode_image(batch_tensor)
-        text_features = model.encode_text(text_tokens)
-        image_features = image_features/image_features.norm(dim=-1, keepdim = True)
-        text_features = text_features/text_features.norm(dim=-1, keepdim= True)
-
-        logits = logit_scale * (image_features @ text_features.T)
-
-        probability = logits.softmax(dim=-1).cpu().numpy()
-
-        return probability
-
-
-if __name__ == "__main__":
-    pass
+        
+        logits_per_image, _ = model(image_input, text_tokens)
+        
+        
+        probs = logits_per_image.softmax(dim=-1).cpu().numpy()
+        
+    final_probs = []
+    
+    for img_probs in probs:
+        
+        idx = 0
+        
+        acc_prob = sum(img_probs[idx : idx + len(ACCIDENT_PROMPTS)])
+        idx += len(ACCIDENT_PROMPTS)
+        
+        norm_prob = sum(img_probs[idx : idx + len(NORMAL_PROMPTS)])
+        idx += len(NORMAL_PROMPTS)
+        
+        blank_prob = sum(img_probs[idx : idx + len(BLANK_PROMPTS)])
+        idx += len(BLANK_PROMPTS)
+        
+        fire_prob = sum(img_probs[idx : idx + len(FIRE_PROMPTS)])
+        
+        
+        
+        final_probs.append([acc_prob, norm_prob, blank_prob, fire_prob])
+        
+    return np.array(final_probs)

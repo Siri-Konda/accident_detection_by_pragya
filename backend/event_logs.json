@@ -1,9 +1,702 @@
 [
     {
-        "timestamp": "2026-08-06 13:10:11",
-        "camera_id": "12",
-        "location": "Main",
+        "timestamp": "2026-08-06 18:31:21",
+        "camera_id": "c2",
+        "location": "rvce",
+        "event_type": "ACCIDENT",
+        "details": "Accident detected with 71.6% confidence"
+    },
+    {
+        "timestamp": "2026-08-06 18:31:21",
+        "camera_id": "c2",
+        "location": "rvce",
+        "event_type": "ACCIDENT",
+        "details": "Accident detected with 69.3% confidence"
+    },
+    {
+        "timestamp": "2026-08-06 18:31:21",
+        "camera_id": "c2",
+        "location": "rvce",
+        "event_type": "ACCIDENT",
+        "details": "Accident detected with 69.3% confidence"
+    },
+    {
+        "timestamp": "2026-08-06 18:31:20",
+        "camera_id": "c2",
+        "location": "rvce",
+        "event_type": "ACCIDENT",
+        "details": "Accident detected with 71.8% confidence"
+    },
+    {
+        "timestamp": "2026-08-06 18:31:20",
+        "camera_id": "c2",
+        "location": "rvce",
+        "event_type": "ACCIDENT",
+        "details": "Accident detected with 82.7% confidence"
+    },
+    {
+        "timestamp": "2026-08-06 18:31:20",
+        "camera_id": "c2",
+        "location": "rvce",
+        "event_type": "ACCIDENT",
+        "details": "Accident detected with 78.4% confidence"
+    },
+    {
+        "timestamp": "2026-08-06 18:31:19",
+        "camera_id": "c2",
+        "location": "rvce",
+        "event_type": "ACCIDENT",
+        "details": "Accident detected with 79.6% confidence"
+    },
+    {
+        "timestamp": "2026-08-06 18:31:19",
+        "camera_id": "c2",
+        "location": "rvce",
+        "event_type": "ACCIDENT",
+        "details": "Accident detected with 80.1% confidence"
+    },
+    {
+        "timestamp": "2026-08-06 18:31:18",
+        "camera_id": "c2",
+        "location": "rvce",
+        "event_type": "ACCIDENT",
+        "details": "Accident detected with 71.2% confidence"
+    },
+    {
+        "timestamp": "2026-08-06 18:31:18",
+        "camera_id": "c2",
+        "location": "rvce",
+        "event_type": "ACCIDENT",
+        "details": "Accident detected with 76.6% confidence"
+    },
+    {
+        "timestamp": "2026-08-06 18:31:18",
+        "camera_id": "c2",
+        "location": "rvce",
+        "event_type": "ACCIDENT",
+        "details": "Accident detected with 66.2% confidence"
+    },
+    {
+        "timestamp": "2026-08-06 18:31:18",
+        "camera_id": "c2",
+        "location": "rvce",
+        "event_type": "ACCIDENT",
+        "details": "Accident detected with 75.8% confidence"
+    },
+    {
+        "timestamp": "2026-08-06 18:31:17",
+        "camera_id": "c2",
+        "location": "rvce",
+        "event_type": "ACCIDENT",
+        "details": "Accident detected with 66.9% confidence"
+    },
+    {
+        "timestamp": "2026-08-06 18:31:17",
+        "camera_id": "c2",
+        "location": "rvce",
+        "event_type": "ACCIDENT",
+        "details": "Accident detected with 71.7% confidence"
+    },
+    {
+        "timestamp": "2026-08-06 18:31:17",
+        "camera_id": "c2",
+        "location": "rvce",
+        "event_type": "ACCIDENT",
+        "details": "Accident detected with 72.9% confidence"
+    },
+    {
+        "timestamp": "2026-08-06 18:31:17",
+        "camera_id": "c2",
+        "location": "rvce",
+        "event_type": "ACCIDENT",
+        "details": "Accident detected with 77.9% confidence"
+    },
+    {
+        "timestamp": "2026-08-06 18:31:16",
+        "camera_id": "c2",
+        "location": "rvce",
+        "event_type": "ACCIDENT",
+        "details": "Accident detected with 74.9% confidence"
+    },
+    {
+        "timestamp": "2026-08-06 18:31:16",
+        "camera_id": "c2",
+        "location": "rvce",
+        "event_type": "ACCIDENT",
+        "details": "Accident detected with 77.6% confidence"
+    },
+    {
+        "timestamp": "2026-08-06 18:31:16",
+        "camera_id": "c2",
+        "location": "rvce",
+        "event_type": "ACCIDENT",
+        "details": "Accident detected with 79.4% confidence"
+    },
+    {
+        "timestamp": "2026-08-06 18:31:15",
+        "camera_id": "c2",
+        "location": "rvce",
+        "event_type": "ACCIDENT",
+        "details": "Accident detected with 87.5% confidence"
+    },
+    {
+        "timestamp": "2026-08-06 18:31:15",
+        "camera_id": "c2",
+        "location": "rvce",
+        "event_type": "ACCIDENT",
+        "details": "Accident detected with 84.7% confidence"
+    },
+    {
+        "timestamp": "2026-08-06 18:31:15",
+        "camera_id": "c2",
+        "location": "rvce",
+        "event_type": "ACCIDENT",
+        "details": "Accident detected with 82.0% confidence"
+    },
+    {
+        "timestamp": "2026-08-06 18:31:15",
+        "camera_id": "c2",
+        "location": "rvce",
+        "event_type": "ACCIDENT",
+        "details": "Accident detected with 82.1% confidence"
+    },
+    {
+        "timestamp": "2026-08-06 18:31:14",
+        "camera_id": "c2",
+        "location": "rvce",
+        "event_type": "ACCIDENT",
+        "details": "Accident detected with 80.5% confidence"
+    },
+    {
+        "timestamp": "2026-08-06 18:31:14",
+        "camera_id": "c2",
+        "location": "rvce",
+        "event_type": "ACCIDENT",
+        "details": "Accident detected with 81.7% confidence"
+    },
+    {
+        "timestamp": "2026-08-06 18:31:14",
+        "camera_id": "c2",
+        "location": "rvce",
+        "event_type": "ACCIDENT",
+        "details": "Accident detected with 85.2% confidence"
+    },
+    {
+        "timestamp": "2026-08-06 18:31:14",
+        "camera_id": "c2",
+        "location": "rvce",
+        "event_type": "ACCIDENT",
+        "details": "Accident detected with 88.0% confidence"
+    },
+    {
+        "timestamp": "2026-08-06 18:31:13",
+        "camera_id": "c2",
+        "location": "rvce",
+        "event_type": "ACCIDENT",
+        "details": "Accident detected with 88.4% confidence"
+    },
+    {
+        "timestamp": "2026-08-06 18:31:13",
+        "camera_id": "c2",
+        "location": "rvce",
+        "event_type": "ACCIDENT",
+        "details": "Accident detected with 89.3% confidence"
+    },
+    {
+        "timestamp": "2026-08-06 18:31:13",
+        "camera_id": "c2",
+        "location": "rvce",
+        "event_type": "ACCIDENT",
+        "details": "Accident detected with 86.5% confidence"
+    },
+    {
+        "timestamp": "2026-08-06 18:31:12",
+        "camera_id": "c2",
+        "location": "rvce",
+        "event_type": "ACCIDENT",
+        "details": "Accident detected with 87.4% confidence"
+    },
+    {
+        "timestamp": "2026-08-06 18:31:12",
+        "camera_id": "c2",
+        "location": "rvce",
+        "event_type": "ACCIDENT",
+        "details": "Accident detected with 91.8% confidence"
+    },
+    {
+        "timestamp": "2026-08-06 18:31:12",
+        "camera_id": "c2",
+        "location": "rvce",
+        "event_type": "ACCIDENT",
+        "details": "Accident detected with 74.4% confidence"
+    },
+    {
+        "timestamp": "2026-08-06 18:31:12",
+        "camera_id": "c2",
+        "location": "rvce",
+        "event_type": "ACCIDENT",
+        "details": "Accident detected with 74.2% confidence"
+    },
+    {
+        "timestamp": "2026-08-06 18:31:11",
+        "camera_id": "c2",
+        "location": "rvce",
+        "event_type": "ACCIDENT",
+        "details": "Accident detected with 68.8% confidence"
+    },
+    {
+        "timestamp": "2026-08-06 18:31:11",
+        "camera_id": "c2",
+        "location": "rvce",
+        "event_type": "ACCIDENT",
+        "details": "Accident detected with 77.4% confidence"
+    },
+    {
+        "timestamp": "2026-08-06 18:31:11",
+        "camera_id": "c2",
+        "location": "rvce",
+        "event_type": "ACCIDENT",
+        "details": "Accident detected with 74.2% confidence"
+    },
+    {
+        "timestamp": "2026-08-06 18:31:11",
+        "camera_id": "c2",
+        "location": "rvce",
+        "event_type": "ACCIDENT",
+        "details": "Accident detected with 76.3% confidence"
+    },
+    {
+        "timestamp": "2026-08-06 18:31:10",
+        "camera_id": "c2",
+        "location": "rvce",
+        "event_type": "ACCIDENT",
+        "details": "Accident detected with 81.4% confidence"
+    },
+    {
+        "timestamp": "2026-08-06 18:31:10",
+        "camera_id": "c2",
+        "location": "rvce",
+        "event_type": "ACCIDENT",
+        "details": "Accident detected with 75.5% confidence"
+    },
+    {
+        "timestamp": "2026-08-06 18:31:10",
+        "camera_id": "c2",
+        "location": "rvce",
+        "event_type": "ACCIDENT",
+        "details": "Accident detected with 74.5% confidence"
+    },
+    {
+        "timestamp": "2026-08-06 18:31:09",
+        "camera_id": "c2",
+        "location": "rvce",
+        "event_type": "ACCIDENT",
+        "details": "Accident detected with 72.0% confidence"
+    },
+    {
+        "timestamp": "2026-08-06 18:31:09",
+        "camera_id": "c2",
+        "location": "rvce",
+        "event_type": "ACCIDENT",
+        "details": "Accident detected with 77.4% confidence"
+    },
+    {
+        "timestamp": "2026-08-06 18:31:08",
+        "camera_id": "c2",
+        "location": "rvce",
+        "event_type": "ACCIDENT",
+        "details": "Accident detected with 79.2% confidence"
+    },
+    {
+        "timestamp": "2026-08-06 18:31:08",
+        "camera_id": "c2",
+        "location": "rvce",
+        "event_type": "ACCIDENT",
+        "details": "Accident detected with 81.4% confidence"
+    },
+    {
+        "timestamp": "2026-08-06 18:31:08",
+        "camera_id": "c2",
+        "location": "rvce",
+        "event_type": "ACCIDENT",
+        "details": "Accident detected with 86.4% confidence"
+    },
+    {
+        "timestamp": "2026-08-06 18:31:08",
+        "camera_id": "c2",
+        "location": "rvce",
+        "event_type": "ACCIDENT",
+        "details": "Accident detected with 90.2% confidence"
+    },
+    {
+        "timestamp": "2026-08-06 18:31:07",
+        "camera_id": "c2",
+        "location": "rvce",
+        "event_type": "ACCIDENT",
+        "details": "Accident detected with 90.8% confidence"
+    },
+    {
+        "timestamp": "2026-08-06 18:31:07",
+        "camera_id": "c2",
+        "location": "rvce",
+        "event_type": "ACCIDENT",
+        "details": "Accident detected with 91.2% confidence"
+    },
+    {
+        "timestamp": "2026-08-06 18:31:07",
+        "camera_id": "c2",
+        "location": "rvce",
+        "event_type": "ACCIDENT",
+        "details": "Accident detected with 93.4% confidence"
+    },
+    {
+        "timestamp": "2026-08-06 18:31:06",
+        "camera_id": "c2",
+        "location": "rvce",
+        "event_type": "ACCIDENT",
+        "details": "Accident detected with 93.3% confidence"
+    },
+    {
+        "timestamp": "2026-08-06 18:31:06",
+        "camera_id": "c2",
+        "location": "rvce",
+        "event_type": "ACCIDENT",
+        "details": "Accident detected with 94.3% confidence"
+    },
+    {
+        "timestamp": "2026-08-06 18:31:06",
+        "camera_id": "c2",
+        "location": "rvce",
+        "event_type": "ACCIDENT",
+        "details": "Accident detected with 93.0% confidence"
+    },
+    {
+        "timestamp": "2026-08-06 18:31:06",
+        "camera_id": "c2",
+        "location": "rvce",
+        "event_type": "ACCIDENT",
+        "details": "Accident detected with 91.6% confidence"
+    },
+    {
+        "timestamp": "2026-08-06 18:31:05",
+        "camera_id": "c2",
+        "location": "rvce",
+        "event_type": "ACCIDENT",
+        "details": "Accident detected with 93.2% confidence"
+    },
+    {
+        "timestamp": "2026-08-06 18:31:05",
+        "camera_id": "c2",
+        "location": "rvce",
         "event_type": "ACCIDENT",
         "details": "Accident detected with 93.1% confidence"
+    },
+    {
+        "timestamp": "2026-08-06 18:31:05",
+        "camera_id": "c2",
+        "location": "rvce",
+        "event_type": "ACCIDENT",
+        "details": "Accident detected with 89.1% confidence"
+    },
+    {
+        "timestamp": "2026-08-06 18:31:05",
+        "camera_id": "c2",
+        "location": "rvce",
+        "event_type": "ACCIDENT",
+        "details": "Accident detected with 82.3% confidence"
+    },
+    {
+        "timestamp": "2026-08-06 18:31:04",
+        "camera_id": "c2",
+        "location": "rvce",
+        "event_type": "ACCIDENT",
+        "details": "Accident detected with 94.7% confidence"
+    },
+    {
+        "timestamp": "2026-08-06 18:31:04",
+        "camera_id": "c2",
+        "location": "rvce",
+        "event_type": "ACCIDENT",
+        "details": "Accident detected with 95.2% confidence"
+    },
+    {
+        "timestamp": "2026-08-06 18:31:04",
+        "camera_id": "c2",
+        "location": "rvce",
+        "event_type": "ACCIDENT",
+        "details": "Accident detected with 91.8% confidence"
+    },
+    {
+        "timestamp": "2026-08-06 18:31:04",
+        "camera_id": "c2",
+        "location": "rvce",
+        "event_type": "ACCIDENT",
+        "details": "Accident detected with 94.0% confidence"
+    },
+    {
+        "timestamp": "2026-08-06 18:31:03",
+        "camera_id": "c2",
+        "location": "rvce",
+        "event_type": "ACCIDENT",
+        "details": "Accident detected with 91.4% confidence"
+    },
+    {
+        "timestamp": "2026-08-06 18:31:03",
+        "camera_id": "c2",
+        "location": "rvce",
+        "event_type": "ACCIDENT",
+        "details": "Accident detected with 88.5% confidence"
+    },
+    {
+        "timestamp": "2026-08-06 18:31:03",
+        "camera_id": "c2",
+        "location": "rvce",
+        "event_type": "ACCIDENT",
+        "details": "Accident detected with 94.3% confidence"
+    },
+    {
+        "timestamp": "2026-08-06 18:31:02",
+        "camera_id": "c2",
+        "location": "rvce",
+        "event_type": "ACCIDENT",
+        "details": "Accident detected with 93.3% confidence"
+    },
+    {
+        "timestamp": "2026-08-06 18:31:02",
+        "camera_id": "c2",
+        "location": "rvce",
+        "event_type": "ACCIDENT",
+        "details": "Accident detected with 95.1% confidence"
+    },
+    {
+        "timestamp": "2026-08-06 18:31:02",
+        "camera_id": "c2",
+        "location": "rvce",
+        "event_type": "ACCIDENT",
+        "details": "Accident detected with 91.4% confidence"
+    },
+    {
+        "timestamp": "2026-08-06 18:31:02",
+        "camera_id": "c2",
+        "location": "rvce",
+        "event_type": "ACCIDENT",
+        "details": "Accident detected with 89.8% confidence"
+    },
+    {
+        "timestamp": "2026-08-06 18:31:01",
+        "camera_id": "c2",
+        "location": "rvce",
+        "event_type": "ACCIDENT",
+        "details": "Accident detected with 91.7% confidence"
+    },
+    {
+        "timestamp": "2026-08-06 18:31:01",
+        "camera_id": "c2",
+        "location": "rvce",
+        "event_type": "ACCIDENT",
+        "details": "Accident detected with 88.4% confidence"
+    },
+    {
+        "timestamp": "2026-08-06 18:31:01",
+        "camera_id": "c2",
+        "location": "rvce",
+        "event_type": "ACCIDENT",
+        "details": "Accident detected with 83.7% confidence"
+    },
+    {
+        "timestamp": "2026-08-06 18:31:01",
+        "camera_id": "c2",
+        "location": "rvce",
+        "event_type": "ACCIDENT",
+        "details": "Accident detected with 79.9% confidence"
+    },
+    {
+        "timestamp": "2026-08-06 18:31:00",
+        "camera_id": "c2",
+        "location": "rvce",
+        "event_type": "ACCIDENT",
+        "details": "Accident detected with 78.2% confidence"
+    },
+    {
+        "timestamp": "2026-08-06 18:31:00",
+        "camera_id": "c2",
+        "location": "rvce",
+        "event_type": "ACCIDENT",
+        "details": "Accident detected with 83.2% confidence"
+    },
+    {
+        "timestamp": "2026-08-06 18:31:00",
+        "camera_id": "c2",
+        "location": "rvce",
+        "event_type": "ACCIDENT",
+        "details": "Accident detected with 89.1% confidence"
+    },
+    {
+        "timestamp": "2026-08-06 18:31:00",
+        "camera_id": "c2",
+        "location": "rvce",
+        "event_type": "ACCIDENT",
+        "details": "Accident detected with 90.0% confidence"
+    },
+    {
+        "timestamp": "2026-08-06 18:30:59",
+        "camera_id": "c2",
+        "location": "rvce",
+        "event_type": "ACCIDENT",
+        "details": "Accident detected with 87.3% confidence"
+    },
+    {
+        "timestamp": "2026-08-06 18:30:59",
+        "camera_id": "c2",
+        "location": "rvce",
+        "event_type": "ACCIDENT",
+        "details": "Accident detected with 78.8% confidence"
+    },
+    {
+        "timestamp": "2026-08-06 18:30:52",
+        "camera_id": "c2",
+        "location": "rvce",
+        "event_type": "ACCIDENT",
+        "details": "Accident detected with 68.0% confidence"
+    },
+    {
+        "timestamp": "2026-08-06 18:30:51",
+        "camera_id": "c2",
+        "location": "rvce",
+        "event_type": "ACCIDENT",
+        "details": "Accident detected with 67.2% confidence"
+    },
+    {
+        "timestamp": "2026-08-06 18:30:48",
+        "camera_id": "c2",
+        "location": "rvce",
+        "event_type": "ACCIDENT",
+        "details": "Accident detected with 69.4% confidence"
+    },
+    {
+        "timestamp": "2026-08-06 18:30:48",
+        "camera_id": "c2",
+        "location": "rvce",
+        "event_type": "ACCIDENT",
+        "details": "Accident detected with 65.5% confidence"
+    },
+    {
+        "timestamp": "2026-08-06 18:30:47",
+        "camera_id": "c2",
+        "location": "rvce",
+        "event_type": "ACCIDENT",
+        "details": "Accident detected with 75.1% confidence"
+    },
+    {
+        "timestamp": "2026-08-06 18:30:47",
+        "camera_id": "c2",
+        "location": "rvce",
+        "event_type": "ACCIDENT",
+        "details": "Accident detected with 73.1% confidence"
+    },
+    {
+        "timestamp": "2026-08-06 18:30:45",
+        "camera_id": "c2",
+        "location": "rvce",
+        "event_type": "ACCIDENT",
+        "details": "Accident detected with 73.7% confidence"
+    },
+    {
+        "timestamp": "2026-08-06 18:30:45",
+        "camera_id": "c2",
+        "location": "rvce",
+        "event_type": "ACCIDENT",
+        "details": "Accident detected with 73.0% confidence"
+    },
+    {
+        "timestamp": "2026-08-06 18:30:45",
+        "camera_id": "c2",
+        "location": "rvce",
+        "event_type": "ACCIDENT",
+        "details": "Accident detected with 73.1% confidence"
+    },
+    {
+        "timestamp": "2026-08-06 18:30:44",
+        "camera_id": "c2",
+        "location": "rvce",
+        "event_type": "ACCIDENT",
+        "details": "Accident detected with 74.7% confidence"
+    },
+    {
+        "timestamp": "2026-08-06 18:30:44",
+        "camera_id": "c2",
+        "location": "rvce",
+        "event_type": "ACCIDENT",
+        "details": "Accident detected with 70.4% confidence"
+    },
+    {
+        "timestamp": "2026-08-06 18:30:44",
+        "camera_id": "c2",
+        "location": "rvce",
+        "event_type": "ACCIDENT",
+        "details": "Accident detected with 70.7% confidence"
+    },
+    {
+        "timestamp": "2026-08-06 18:30:44",
+        "camera_id": "c2",
+        "location": "rvce",
+        "event_type": "ACCIDENT",
+        "details": "Accident detected with 76.6% confidence"
+    },
+    {
+        "timestamp": "2026-08-06 18:30:43",
+        "camera_id": "c2",
+        "location": "rvce",
+        "event_type": "ACCIDENT",
+        "details": "Accident detected with 83.3% confidence"
+    },
+    {
+        "timestamp": "2026-08-06 18:30:43",
+        "camera_id": "c2",
+        "location": "rvce",
+        "event_type": "ACCIDENT",
+        "details": "Accident detected with 76.2% confidence"
+    },
+    {
+        "timestamp": "2026-08-06 18:30:43",
+        "camera_id": "c2",
+        "location": "rvce",
+        "event_type": "ACCIDENT",
+        "details": "Accident detected with 74.0% confidence"
+    },
+    {
+        "timestamp": "2026-08-06 18:30:42",
+        "camera_id": "c2",
+        "location": "rvce",
+        "event_type": "ACCIDENT",
+        "details": "Accident detected with 66.4% confidence"
+    },
+    {
+        "timestamp": "2026-08-06 18:30:42",
+        "camera_id": "c2",
+        "location": "rvce",
+        "event_type": "ACCIDENT",
+        "details": "Accident detected with 68.0% confidence"
+    },
+    {
+        "timestamp": "2026-08-06 18:30:41",
+        "camera_id": "c2",
+        "location": "rvce",
+        "event_type": "ACCIDENT",
+        "details": "Accident detected with 71.2% confidence"
+    },
+    {
+        "timestamp": "2026-08-06 18:30:41",
+        "camera_id": "c2",
+        "location": "rvce",
+        "event_type": "ACCIDENT",
+        "details": "Accident detected with 70.3% confidence"
+    },
+    {
+        "timestamp": "2026-08-06 18:30:40",
+        "camera_id": "c2",
+        "location": "rvce",
+        "event_type": "ACCIDENT",
+        "details": "Accident detected with 68.3% confidence"
     }
 ]

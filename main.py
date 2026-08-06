@@ -131,7 +131,7 @@ def generate_frames(filename: str, camera_id: str, camera_location: str):
             color = (255, 255, 255)
 
         cv2.putText(display_frame, text, (15, 35),
-                    cv2.FONT_HERSHEY_SIMPLEX, 0.8, color, 2, cv2.LINE_AA)
+                    cv2.FONT_HERSHEY_COMPLEX, 0.8, color, 2, cv2.LINE_AA)
 
         _, buffer = cv2.imencode('.jpg', display_frame)
         frame_bytes = buffer.tobytes()

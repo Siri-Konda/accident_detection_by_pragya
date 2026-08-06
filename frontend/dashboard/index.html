@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Live Accident Detection</title>
-    <!-- Import a modern font -->
+
     
     <style>
         :root {
@@ -11,66 +11,87 @@
             --card-bg: rgba(30, 33, 40, 0.7);
             --text-main: #f8f9fa;
             --text-muted: #0f0f10;
-            --accent-red: #ef4444;
+            --accent-red: rgba(96,96,255);
             --accent-green: #10b981;
             --accent-green-bg: rgba(16, 185, 129, 0.15);
         }
 
         body { 
-            font-family: 'Inter', sans-serif; 
-            background-color: var(--bg-color); 
+            font-family: 'Arial', sans-serif; 
+            background-color: rgb(152,152,255); 
             background-attachment: fixed;
             color: var(--text-main); 
             text-align: center; 
             margin: 0;
-            padding: 40px 20px;
+            padding: 0;
         }
+
+        .headbox{
+            display: flex ;
+            justify-content: space-between;
+            align-items: center;
+            height: 4%;
+            width: auto;
+            padding: 20px 50px;
+            background-color: #fdfdfd;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 5px solid rgb(96,96,255);
+        }
+
 
         h1 { 
             margin: 0 0 10px 0; 
             font-size: 2.5rem;
-            color: #050505;
+            color: rgb(96,96,255);
             font-weight: 700;
-            letter-spacing: -0.5px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            letter-spacing: 0.05em;
+        }
+
+        h2{
+            color: rgb(18, 18, 36);
+            font-size: 2.5rem;
         }
         
         .subtitle {
             color: var(--text-muted);
             font-size: 1.1rem;
-
             margin-bottom: 30px;
         }
         
-        /* Modern Button Styling */
+        
         .start-btn { 
             margin: 10px 0 50px 0; 
             padding: 14px 36px; 
             font-size: 16px; 
             font-weight: 600; 
-            background: linear-gradient(135deg, #ef4444, #dc2626); 
+            background: linear-gradient(135deg, rgb(93, 93, 252), rgb(73, 73, 252)); 
             color: white; 
             border: 1px solid rgba(255,255,255,0.1); 
             border-radius: 8px; 
             cursor: pointer; 
-            box-shadow: 0 4px 15px rgba(239, 68, 68, 0.3);
+            box-shadow: 0 4px 15px rgba(96, 96, 255, 0.3);
             transition: all 0.3s ease;
         }
         .start-btn:hover { 
             transform: translateY(-2px); 
         }
 
-        /* STRICT 2-COLUMN GRID */
+        
         .grid { 
             display: grid; 
-            /* Forces exactly 2 columns minimum. Change to repeat(auto-fit, minmax(400px, 1fr)) for more dynamic scaling */
             grid-template-columns: repeat(2, 1fr); 
             gap: 30px; 
             max-width: 1400px;
             margin: 0 auto;
-            justify-items: center; /* Centers the cards nicely */
+            justify-items: center;
         }
 
-        /* Responsive Cards */
+        
         .card { 
             background: var(--card-bg);
             backdrop-filter: blur(10px);
@@ -79,7 +100,6 @@
             border-radius: 16px; 
             padding: 20px; 
             
-            /* Allow the card to shrink/grow based on screen size, but cap it at your 640px video res */
             width: 100%; 
             max-width: 640px; 
             box-sizing: border-box;
@@ -95,7 +115,7 @@
             border-color: rgba(255, 255, 255, 0.1);
         }
         
-        /* Metadata Header */
+        
         .card-header {
             display: flex;
             justify-content: space-between;
@@ -116,7 +136,7 @@
             align-items: center;
             gap: 6px;
             letter-spacing: 0.3px;
-            white-space: nowrap; /* Prevents text from breaking */
+            white-space: nowrap;
         }
 
         .cam-info {
@@ -127,14 +147,14 @@
 
         .cam-id {
             font-size: 13px;
-            color: var(--text-muted);
-            font-family: Arial;
+            color: var(--text-main);
+            font-family: Arial, sans-serif;
             font-weight: 600;
             letter-spacing: 0.5px;
             white-space: nowrap;
         }
 
-        /* Pulsing Live Indicator */
+        
         .live-indicator {
             display: flex;
             align-items: center;
@@ -160,10 +180,10 @@
             100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
         }
 
-        /* Responsive Aspect-Ratio Video Container */
+        
         .video-container {
             width: 100%;
-            aspect-ratio: 16 / 9; /* Perfect 640x360 ratio constraint */
+            aspect-ratio: 16 / 9;
             height: auto;
             background-color: #050505;
             border-radius: 10px;
@@ -180,14 +200,80 @@
             height: 100%;
             object-fit: contain; 
             z-index: 1;
+            transition: opacity 0.5s ease;
         }
 
-        /* Placeholder styling for before the stream starts */
         .video-stream[alt="Waiting to start..."] {
             opacity: 0.3;
             filter: grayscale(100%);
         }
+
+        .logs-section {
+            max-width: 1400px;
+            margin: 40px auto 0 auto;
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            text-align: left;
+        }
+
+        .logs-section h2 {
+            margin-top: 0;
+            font-size: 1.5rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 10px;
+            color: #fff;
+        }
+
+        #log-list {
+            max-height: 300px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            padding-right: 10px;
+        }
+
+        
+        #log-list::-webkit-scrollbar {
+            width: 8px;
+        }
+        #log-list::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 4px;
+        }
+        #log-list::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 4px;
+        }
+
+        .log-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 12px;
+            border-radius: 8px;
+            background: rgba(0,0,0,0.4);
+            border-left: 4px solid #666;
+            font-size: 14px;
+        }
+
+        
+        .log-item.accident { border-left-color: #ef4444; background: rgba(239, 68, 68, 0.15); }
+        .log-item.fire { border-left-color: #f97316; background: rgba(249, 115, 22, 0.15); }
+        .log-item.offline { border-left-color: #9ca3af; }
+
+        .log-time { color: #a1a1aa; font-family: monospace; white-space: nowrap; }
+        .log-loc { font-weight: 600; color: #8bbfd3; white-space: nowrap; }
+        .log-msg { color: #fff; }
     </style>
+    <div class="headbox">
+        <h1>PRAGYA</h1>
+    </div>
 </head>
 <body>
     <h1>Real-Time Accident Detection</h1>
@@ -199,7 +285,6 @@
         {% for video in videos %}
         <div class="card">
             
-            <!-- Dynamic UI elements pulling from the JSON data -->
             <div class="card-header">
                 <span class="location-badge">
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
@@ -223,8 +308,21 @@
         {% endfor %}
     </div>
 
+    <!-- --- NEW: Logs Section --- -->
+    <div class="logs-section">
+        <h2>System Activity Logs</h2>
+        <div id="log-list">
+            <div class="log-item">
+                <span class="log-msg" style="color: #a1a1aa;">Waiting for system initialization...</span>
+            </div>
+        </div>
+    </div>
+
     <script>
+        let logInterval;
+
         function startStreams() {
+            // 1. Start the video feeds
             const images = document.querySelectorAll('.video-stream');
             images.forEach(img => {
                 if (!img.src || img.src.includes("Waiting")) {
@@ -233,10 +331,52 @@
                     img.style.filter = 'none';
                 }
             });
-            // Hide button with a smooth fade
+            
+            // 2. Hide button with a smooth fade
             const btn = document.querySelector('.start-btn');
             btn.style.opacity = '0';
             setTimeout(() => btn.style.display = 'none', 300);
+
+            // 3. Start fetching logs periodically
+            if (!logInterval) {
+                fetchLogs(); // run immediately
+                logInterval = setInterval(fetchLogs, 2000); // then every 2 seconds
+            }
+        }
+
+        // --- NEW: Fetch and render logs ---
+        async function fetchLogs() {
+            try {
+                const response = await fetch('/api/logs');
+                const logs = await response.json();
+                renderLogs(logs);
+            } catch (error) {
+                console.error("Error fetching logs:", error);
+            }
+        }
+
+        function renderLogs(logs) {
+            const container = document.getElementById('log-list');
+            
+            if (logs.length === 0) {
+                container.innerHTML = `<div class="log-item"><span class="log-msg" style="color: #a1a1aa;">System active. Monitoring feeds...</span></div>`;
+                return;
+            }
+
+            container.innerHTML = ''; // Clear current list
+            
+            logs.forEach(log => {
+                const item = document.createElement('div');
+                // Apply specific class based on event type to trigger CSS styling
+                item.className = `log-item ${log.event_type.toLowerCase()}`;
+                
+                item.innerHTML = `
+                    <span class="log-time">${log.timestamp}</span>
+                    <span class="log-loc">[${log.location} - CAM: ${log.camera_id}]</span>
+                    <span class="log-msg"><strong>${log.event_type}</strong>: ${log.details}</span>
+                `;
+                container.appendChild(item);
+            });
         }
     </script>
 </body>

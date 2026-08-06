@@ -1,0 +1,9 @@
+[
+    {
+        "timestamp": "2026-08-06 13:10:11",
+        "camera_id": "12",
+        "location": "Main",
+        "event_type": "ACCIDENT",
+        "details": "Accident detected with 93.1% confidence"
+    }
+]

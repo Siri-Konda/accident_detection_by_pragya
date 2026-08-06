@@ -5,6 +5,8 @@ import cv2
 import json
 import threading
 import numpy as np
+from datetime import datetime
+
 from PIL import Image
 from fastapi.staticfiles import StaticFiles
 from fastapi import FastAPI, Request
@@ -19,10 +21,45 @@ app = FastAPI()
 
 templates = Jinja2Templates(directory="../frontend/dashboard")
 
-def print_msg(a,b):
-    print(f"SMS triggered")
+# def print_msg(a,b):
+#     print(f"SMS triggered")
+
+print_msg = send_sms
 
 MAX_BLANK_DURATION = 250
+
+
+LOG_FILE = "event_logs.json"
+log_lock = threading.Lock()
+
+def append_log(camera_id: str, location: str, event_type: str, details: str):
+    """Thread-safe function to append an event to the JSON log file."""
+    log_entry = {
+        "timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+        "camera_id": camera_id,
+        "location": location,
+        "event_type": event_type,
+        "details": details
+    }
+    
+    with log_lock:
+        logs = []
+        if os.path.exists(LOG_FILE):
+            with open(LOG_FILE, "r") as f:
+                try:
+                    logs = json.load(f)
+                except json.JSONDecodeError:
+                    pass
+        
+        
+        logs.insert(0, log_entry)
+        
+        
+        logs = logs[:100]
+        
+        with open(LOG_FILE, "w") as f:
+            json.dump(logs, f, indent=4)
+
 
 def generate_frames(filename: str, camera_id: str, camera_location: str):
     video_path = os.path.join("uploaded_videos", filename)
@@ -39,6 +76,7 @@ def generate_frames(filename: str, camera_id: str, camera_location: str):
      
     sms_sent = False 
     fire_sent = False
+
     blank_sent = False
 
     target_w, target_h = 640, 360
@@ -48,7 +86,6 @@ def generate_frames(filename: str, camera_id: str, camera_location: str):
         ret, frame = cap.read()
         
         if not ret:
-             
             cap.set(cv2.CAP_PROP_POS_FRAMES, 0)
             frame_count = 0
             max_prob_so_far = 0.0  
@@ -58,50 +95,49 @@ def generate_frames(filename: str, camera_id: str, camera_location: str):
 
         if frame_count % frames_per_interval == 0:
             rgb_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+
             pil_img = Image.fromarray(rgb_frame)
 
             probs = detect([pil_img])
-            # print(probs)
             
             crash_prob = probs[0] if probs.ndim == 1 else probs[0][0]
             current_prob_percent = crash_prob * 100.0
+
 
 
             fire_prob = probs[3] if probs.ndim ==1 else probs[0][3]
             fire_prob_percent = fire_prob * 100.0
 
             blank_prob = probs[2] if probs.ndim==1 else probs[0][2]
-            blank_prob_percent = blank_prob * 100.0
 
+            blank_prob_percent = blank_prob * 100.0
             if current_prob_percent > max_prob_so_far:
                 max_prob_so_far = current_prob_percent
 
-             
+            
             if max_prob_so_far > 75.0 and not sms_sent:
                 sms_sent = True  
-                
-                message = f"🚨 URGENT: Accident detected at {camera_location} (Camera ID: {camera_id}). Immediate assistance required!"
+                message = f"URGENT: Accident detected at {camera_location} (Camera ID: {camera_id}). Immediate assistance required!"
                 target_number = "8618011899"  
-                
-                 
                 threading.Thread(target=print_msg, args=(target_number, message)).start()
                 print(f"SMS triggered for {camera_id} at {camera_location} to ambulance")
+                append_log(camera_id, camera_location, "ACCIDENT", f"Accident detected with {max_prob_so_far:.1f}% confidence")
 
-            if fire_prob_percent>35 and not fire_sent:
+            if fire_prob_percent > 35 and not fire_sent:
                 fire_sent = True
                 message = f"URGENT: Fire invloved in accident detected at {camera_location} (Camera ID: {camera_id}). Immediate assistance required!"
                 target_number = "7892632753"
                 threading.Thread(target=print_msg, args=(target_number,message)).start()
                 print(f"SMS triggered for fire emergency")
+                append_log(camera_id, camera_location, "FIRE", f"Fire detected with {fire_prob_percent:.1f}% confidence")
                 
             if blank_prob_percent > 50.0:
-                if frame_count - previous_working_frame > MAX_BLANK_DURATION and not blank_sent: #10 secs
+                if frame_count - previous_working_frame > MAX_BLANK_DURATION and not blank_sent: 
                     blank_sent = True
                     print(f"{camera_id} at {camera_location} may not be working")
-                
+                    append_log(camera_id, camera_location, "OFFLINE", "Camera feed went blank")
             else: 
                 previous_working_frame = frame_count
-
          
         h, w = frame.shape[:2]
         scale = min(target_w / w, target_h / h)
@@ -115,17 +151,16 @@ def generate_frames(filename: str, camera_id: str, camera_location: str):
         
         display_frame[y_offset:y_offset+new_h, x_offset:x_offset+new_w] = resized_frame
 
-         
         if frame_count - previous_working_frame > MAX_BLANK_DURATION:
             text = "Video footage is blank"
             color = (0, 0, 255)
+
         elif max_prob_so_far > 75.0:
             text = f"ACCIDENT DETECTED! ({max_prob_so_far:.1f}%)"
             color = (0, 0, 255)
         elif max_prob_so_far > 0:
             text = f"Max Prob: {max_prob_so_far:.1f}%"
             color = (0, 255, 0)
-
         else:
             text = "Analyzing..."
             color = (255, 255, 255)
@@ -178,7 +213,6 @@ async def index(request: Request):
 
 @app.get("/video_feed/{filename}")
 async def video_feed(filename: str):
-     
     base_name = os.path.splitext(filename)[0]
     json_path = os.path.join("uploaded_videos", f"{base_name}.json")
     
@@ -196,8 +230,25 @@ async def video_feed(filename: str):
         media_type="multipart/x-mixed-replace; boundary=frame"
     )
 
+@app.get("/api/logs")
+async def get_logs():
+
+    if os.path.exists(LOG_FILE):
+        with open(LOG_FILE, "r") as f:
+            try:
+                return json.load(f)
+            except json.JSONDecodeError:
+                return []
+    return []
+
 if __name__ == "__main__":
     import uvicorn
     os.makedirs("uploaded_videos", exist_ok=True)
     os.makedirs("templates", exist_ok=True)
+    
+    
+    if not os.path.exists(LOG_FILE):
+        with open(LOG_FILE, "w") as f:
+            json.dump([], f)
+            
     uvicorn.run(app, host="0.0.0.0", port=8000)

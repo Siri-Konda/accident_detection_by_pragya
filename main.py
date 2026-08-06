@@ -35,6 +35,7 @@ def generate_frames(filename: str, camera_id: str, camera_location: str):
     
      
     sms_sent = False 
+    fire_sent = False
 
     target_w, target_h = 640, 360
 
@@ -56,7 +57,7 @@ def generate_frames(filename: str, camera_id: str, camera_location: str):
             pil_img = Image.fromarray(rgb_frame)
 
             probs = detect([pil_img])
-            print(probs)
+            # print(probs)
             
             crash_prob = probs[0] if probs.ndim == 1 else probs[0][0]
             current_prob_percent = crash_prob * 100.0
@@ -80,11 +81,13 @@ def generate_frames(filename: str, camera_id: str, camera_location: str):
                  
                 threading.Thread(target=print_msg, args=(target_number, message)).start()
                 print(f"SMS triggered for {camera_id} at {camera_location} to ambulance")
-                if fire_prob_percent>75.0:
-                    message = f"URGENT: Fire invloved in accident detected at {camera_location} (Camera ID: {camera_id}). Immediate assistance required!"
-                    target_number = "7892632753"
-                    threading.Thread(target=print_msg, args=(target_number,message)).start()
-                    print(f"SMS triggered for fire emergency")
+
+            if fire_prob_percent>25.0 and not fire_sent:
+                fire_sent = True
+                message = f"URGENT: Fire invloved in accident detected at {camera_location} (Camera ID: {camera_id}). Immediate assistance required!"
+                target_number = "7892632753"
+                threading.Thread(target=print_msg, args=(target_number,message)).start()
+                print(f"SMS triggered for fire emergency")
 
 
          

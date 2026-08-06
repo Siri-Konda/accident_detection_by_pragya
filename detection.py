@@ -46,5 +46,4 @@ def detect(img_list):
 
 
 if __name__ == "__main__":
-    img = Image.open("bike.jpg")
-    print(detect(img))
+    pass

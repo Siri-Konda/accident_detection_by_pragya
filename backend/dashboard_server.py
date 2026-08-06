@@ -123,7 +123,7 @@ def generate_frames(filename: str, camera_id: str, camera_location: str):
                 print(f"SMS triggered for {camera_id} at {camera_location} to ambulance")
                 append_log(camera_id, camera_location, "ACCIDENT", f"Accident detected with {max_prob_so_far:.1f}% confidence")
 
-            if fire_prob_percent > 35 and not fire_sent:
+            if fire_prob_percent > 45 and not fire_sent:
                 fire_sent = True
                 message = f"URGENT: Fire invloved in accident detected at {camera_location} (Camera ID: {camera_id}). Immediate assistance required!"
                 target_number = "7892632753"

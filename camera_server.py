@@ -10,11 +10,11 @@ app = FastAPI()
 UPLOAD_DIR = "uploaded_videos"
 os.makedirs(UPLOAD_DIR, exist_ok=True)
 
-app.mount("/static", StaticFiles(directory="static"), name="static")
+#app.mount("/static", StaticFiles(directory="static"), name="static")
 
 @app.get("/", response_class=HTMLResponse)
 async def serve_index():
-    with open("static/index.html", "r") as f:
+    with open("./index.html", "r") as f:
         return HTMLResponse(content=f.read())
 
 @app.post("/upload")

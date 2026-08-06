@@ -10,14 +10,17 @@ logit_scale = model.logit_scale.exp()
 
 
 text = torch.load("text_features.pt")
-labels = text["labels"]
+# labels = text["labels"]
 
-text_features = text["text_features"].to(device)
+#text_features = text["crash_features"].to(device)
 
 texts = [
-    "a crash/about to crash",
-    "a normal road or steady traffic flow, no accidents"
+    "a crash/accident",
+    "a normal road or steady traffic flow, no accidents",
+    "blank or static noises screen",
+    "smoke or fire"
 ]
+
 
 text_tokens  = clip.tokenize(texts).to(device)
 
@@ -31,7 +34,9 @@ def detect(img_list):
 
     with torch.no_grad():
         image_features = model.encode_image(batch_tensor)
+        text_features = model.encode_text(text_tokens)
         image_features = image_features/image_features.norm(dim=-1, keepdim = True)
+        text_features = text_features/text_features.norm(dim=-1, keepdim= True)
 
         logits = logit_scale * (image_features @ text_features.T)
 

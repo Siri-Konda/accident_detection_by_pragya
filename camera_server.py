@@ -14,7 +14,7 @@ os.makedirs(UPLOAD_DIR, exist_ok=True)
 
 @app.get("/", response_class=HTMLResponse)
 async def serve_index():
-    with open("./index.html", "r") as f:
+    with open("static/index.html", "r") as f:
         return HTMLResponse(content=f.read())
 
 @app.post("/upload")

@@ -17,7 +17,3 @@ def send_sms(to: str, body: str) -> dict:
     resp.raise_for_status()
     return resp.json()
 
-
-if __name__ == "__main__":
-    result = send_sms("8618011899", "Hello from Python")
-    print(result)
